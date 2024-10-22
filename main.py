@@ -142,7 +142,140 @@ st.markdown(page_style, unsafe_allow_html=True)
 
 # Sidebar Navigation
 with st.sidebar:
-    st.markdown("<h2 style='text-align: center; color: #60a5fa;'>Navigation</h2>", unsafe_allow_html=True)
+
+    # First add the CSS and HTML for the particles
+    st.markdown("""
+        <style>
+        section[data-testid="stSidebar"] > div {
+            background: #1a1a1a;
+            position: relative;
+            overflow: hidden;
+        }
+
+        section[data-testid="stSidebar"] > div::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            right: -50%;
+            bottom: -50%;
+            pointer-events: none;  /* Allow clicks to pass through */
+            background: 
+                radial-gradient(circle at 30% 30%, rgba(96, 165, 250, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 70% 60%, rgba(96, 165, 250, 0.1) 0%, transparent 50%),
+                linear-gradient(
+                    45deg,
+                    transparent 0%,
+                    rgba(96, 165, 250, 0.1) 25%,
+                    transparent 50%,
+                    rgba(96, 165, 250, 0.1) 75%,
+                    transparent 100%
+                ),
+                repeating-linear-gradient(
+                    60deg,
+                    transparent 0%,
+                    transparent 2%,
+                    rgba(96, 165, 250, 0.1) 2.5%,
+                    transparent 3%
+                ),
+                repeating-linear-gradient(
+                    120deg,
+                    transparent 0%,
+                    transparent 1.5%,
+                    rgba(96, 165, 250, 0.1) 2%,
+                    transparent 2.5%
+                );
+            animation: electricFlow 8s linear infinite,
+                      pulsate 4s ease-in-out infinite;
+            z-index: 1;
+        }
+
+        section[data-testid="stSidebar"] > div::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            pointer-events: none;  /* Allow clicks to pass through */
+            background: 
+                radial-gradient(circle at 50% var(--y, 50%), 
+                    rgba(96, 165, 250, 0.3) 0%,
+                    transparent 40%);
+            animation: electric-glow 3s ease-in-out infinite alternate;
+            z-index: 2;
+        }
+
+        @keyframes electricFlow {
+            0% {
+                transform: translate(0, 0) rotate(0deg);
+            }
+            100% {
+                transform: translate(-20%, -20%) rotate(1deg);
+            }
+        }
+
+        @keyframes pulsate {
+            0%, 100% {
+                opacity: 0.5;
+            }
+            50% {
+                opacity: 1;
+            }
+        }
+
+        @keyframes electric-glow {
+            0% {
+                --y: 0%;
+                filter: brightness(1);
+            }
+            100% {
+                --y: 100%;
+                filter: brightness(1.5);
+            }
+        }
+
+        /* Ensure radio buttons are clickable */
+        section[data-testid="stSidebar"] [data-testid="stRadio"] {
+            position: relative;
+            z-index: 3;  /* Increased z-index */
+        }
+
+        /* Style radio buttons and maintain functionality */
+        section[data-testid="stSidebar"] [role="radiogroup"] label {
+            position: relative;
+            z-index: 3;  /* Increased z-index */
+            text-shadow: 0 0 10px rgba(96, 165, 250, 0.5);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        section[data-testid="stSidebar"] [role="radiogroup"] label:hover {
+            text-shadow: 0 0 15px rgba(96, 165, 250, 0.8);
+            color: #60a5fa;
+        }
+
+        /* Ensure the title is visible */
+        section[data-testid="stSidebar"] [data-testid="stMarkdown"] {
+            position: relative;
+            z-index: 3;  /* Increased z-index */
+        }
+        </style>
+    """, unsafe_allow_html=True)
+
+
+    st.markdown("<h2 style='text-align: center;"
+                "color: #60a5fa;'>Navigation</h2>", unsafe_allow_html=True)
+
+    # Add CSS to create padding
+    st.markdown("""
+        <style>
+        div[data-testid="stRadio"] {
+            padding-left: 20px;
+        }
+        </style>
+    """, unsafe_allow_html=True)
+
     selected_page = st.radio(
         "",
         ["Home", "Skills", "Projects", "Contact"],
