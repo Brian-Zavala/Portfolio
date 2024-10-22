@@ -516,5 +516,73 @@ def fix_general_styles():
             padding: 0.5rem !important;
         }
     }
+    
+    /* Enable scrolling on mobile */
+[data-testid="stAppViewContainer"] {
+    overflow-x: hidden !important;
+    overflow-y: auto !important;
+    width: 100vw !important;
+    max-width: 100vw !important;
+    position: relative !important;
+    min-height: 100vh !important;
+    height: auto !important;
+}
+
+/* Fix main content area scrolling */
+.main {
+    overflow-y: auto !important;
+    height: auto !important;
+    min-height: 100vh !important;
+    padding-bottom: 2rem !important;
+}
+
+/* Ensure vertical blocks don't restrict scrolling */
+[data-testid="stVerticalBlock"] {
+    height: auto !important;
+    min-height: auto !important;
+    overflow: visible !important;
+}
+
+/* Mobile-specific fixes */
+@media (max-width: 768px) {
+    [data-testid="stAppViewContainer"] {
+        position: static !important;
+    }
+    
+    .stApp {
+        overflow: auto !important;
+        height: auto !important;
+    }
+    
+    [data-testid="stVerticalBlock"] {
+        margin-bottom: 1rem !important;
+    }
+    
+    /* Ensure project cards are fully scrollable */
+    .project-card {
+        height: auto !important;
+        overflow: visible !important;
+        margin-bottom: 1.5rem !important;
+    }
+    
+    /* Fix content container on mobile */
+    .content-container {
+        height: auto !important;
+        overflow: visible !important;
+        padding-bottom: 2rem !important;
+    }
+}
+
+/* Ensure sidebar doesn't affect main content scrolling */
+[data-testid="stSidebar"] {
+    height: 100vh !important;
+    position: fixed !important;
+    overflow-y: auto !important;
+}
+
+/* Fix for any fixed position elements */
+.stApp > header {
+    position: absolute !important;
+}
     </style>
     """, unsafe_allow_html=True)
