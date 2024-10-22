@@ -6,9 +6,19 @@ st.set_page_config(
     page_title="Brian's Portfolio",
     page_icon="💻",
     layout="wide",
-    initial_sidebar_state="expanded"
-)
+    initial_sidebar_state="expanded",
+    menu_items ={
+        'Get Help': None,
+        'Report a bug': None,
+        'About': None})
 
+hide_menu = """
+<style>
+#MainMenu {visibility: hidden;}
+footer {visibility: hidden;}
+</style>
+"""
+st.markdown(hide_menu, unsafe_allow_html=True)
 
 # Layout fixes for responsive containers
 st.markdown("""
