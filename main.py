@@ -9,6 +9,72 @@ st.set_page_config(
     initial_sidebar_state="expanded"
 )
 
+
+# Layout fixes for responsive containers
+st.markdown("""
+    <style>
+    /* Reset container behaviors */
+    .element-container, .stMarkdown, .css-1r6slb0 {
+        width: 100% !important;
+        max-width: 100% !important;
+        padding: 0 !important;
+    }
+    
+    /* Column flex container */
+    [data-testid="column"] {
+        width: 100% !important;
+        flex: 1 1 calc(33.333% - 1rem) !important;
+        min-width: 280px !important;
+    }
+    
+    /* Responsive grid system */
+    [data-testid="stHorizontalBlock"] {
+        width: 100% !important;
+        display: flex !important;
+        flex-wrap: wrap !important;
+        gap: 1rem !important;
+        justify-content: center !important;
+    }
+
+    /* Container reset on larger screens */
+    @media (min-width: 768px) {
+        .element-container {
+            width: auto !important;
+            max-width: none !important;
+        }
+        
+        [data-testid="column"] {
+            flex-basis: calc(33.333% - 1rem) !important;
+        }
+    }
+
+    /* Card styling with flex properties */
+    div[data-testid="stVerticalBlock"] > div {
+        display: flex !important;
+    }
+
+   
+    /* Ensure text containers maintain width */
+    .text-container {
+       * Fix for nested columns */
+    [data-testid="stHorizontalBlock"] [data-testid="stHorizontalBlock"] {
+        flex-wrap: nowrap !important;
+    } width: 100% !important;
+        box-sizing: border-box !important;
+        padding: 1rem !important;
+    }
+
+    /* Reset for specific Streamlit elements */
+    .stButton, .stDownloadButton {
+        width: auto !important;
+        min-width: 200px !important;
+    }
+
+    /
+    </style>
+""", unsafe_allow_html=True)
+
+
 # Custom CSS
 page_style = """
 <style>
@@ -359,20 +425,157 @@ elif selected_page == "Projects":
     with col1:
         st.markdown("""
         <div class='project-card'>
-            <h3 style='color: #60a5fa;'>Project 1</h3>
-            <p>Description of your first project. Highlight the key features,
-            technologies used, and your role in development.</p>
-            <a href='#'>View Project →</a>
+            <h3 style='color: #60a5fa;'>A.I Web Scraper & Analyzer</h3>
+            <p>
+            The Groq AI Web Scraper & Analyzer is a sophisticated web application that combines advanced AI processing with data visualization capabilities.
+Key Technical Components:
+
+AI Integration: Groq API for advanced language processing and analysis
+Web Scraping:
+
+Selenium for automated content extraction
+BeautifulSoup4 for HTML parsing
+
+
+Frontend: Streamlit for interactive dashboard
+Visualization:
+
+Plotly Express for dynamic data charts
+WordCloud for text analysis representation
+
+
+Async Processing: AsyncGroq client for efficient API communication
+
+Technical Achievements:
+
+Implemented parallel web scraping with anti-blocking measures
+Built real-time AI content analysis system
+Created interactive visualization dashboard
+Developed asynchronous data processing pipeline
+Designed dynamic content categorization
+
+The application showcases expertise in:
+
+AI API integration
+Web scraping automation
+Natural Language Processing
+Data visualization
+Asynchronous programming
+Error handling and retry mechanisms
+
+This platform effectively combines web scraping capabilities with AI-powered analysis, providing users with intelligent insights from web content while maintaining performance through efficient data processing and modern visualization techniques.
+            </p>
+            <a href='https://github.com/Brian-Zavala/A.I-Web-Scraper'>View Project →</a>
+        </div>
+        """, unsafe_allow_html=True)
+
+        with col1:
+            st.markdown("""
+            <div class='project-card'>
+                <h3 style='color: #60a5fa;'>LifeSync</h3>
+                <p>
+        The LifeSync Task Manager is a full-stack productivity application built with modern web technologies. At its core, it uses Streamlit for the frontend interface while leveraging MongoDB Atlas as its database backend. The application integrates interactive data visualization through Plotly Express and Pandas for data analysis and representation.
+        
+        Key Technical Components:
+        
+        Backend: MongoDB Atlas with PyMongo client for secure data persistence
+        Frontend: Streamlit for responsive UI and interactive components
+        Data Visualization: Plotly Express for dynamic charts and analytics
+        Data Processing: Pandas for efficient data manipulation and analysis
+        Technical Achievements:
+        
+        Implemented secure user authentication and data management
+        Created an efficient task tracking and categorization system
+        Developed real-time data visualization and analytics
+        Built a scalable reward and progress tracking system
+        Integrated error handling and data validation
+        The application demonstrates proficiency in:
+        
+        Database design and management
+        Full-stack web development
+        Data visualization and analysis
+        User experience design
+        Secure application architecture
+                </p>
+                <a href='https://github.com/Brian-Zavala/LifeSync'>View Project →</a>
+            </div>
+            """, unsafe_allow_html=True)
+
+    with col2:
+        st.markdown("""
+        <div class='project-card'>
+            <h3 style='color: #60a5fa;'>Simple Bank</h3>
+            <p>
+            The Modern Banking Dashboard is a comprehensive financial analytics platform that leverages real-time data processing and secure transaction handling.
+Key Technical Components:
+
+Frontend: Streamlit for responsive financial dashboard
+Backend: Plaid API for secure bank integration
+Database: SQLite for local transaction storage
+Visualization:
+
+Plotly for interactive financial charts
+Matplotlib for statistical analysis
+Seaborn for trend visualization
+
+
+
+Technical Achievements:
+
+Implemented secure bank account integration
+Built real-time transaction monitoring
+Created predictive spending analysis
+Developed automated expense categorization
+Designed interactive budget tracking
+
+The application demonstrates expertise in:
+
+Financial API integration
+Secure data handling
+Statistical analysis
+Data visualization
+Pattern recognition
+Predictive modeling
+
+This platform combines secure financial data handling with advanced analytics to provide users with comprehensive insights into their spending patterns and financial health, while maintaining strict security standards and data privacy.
+</p>
+            <a href='https://github.com/Brian-Zavala/Simple-Bank'>View Project →</a>
         </div>
         """, unsafe_allow_html=True)
 
     with col2:
         st.markdown("""
         <div class='project-card'>
-            <h3 style='color: #60a5fa;'>Project 2</h3>
-            <p>Description of your second project. Share the challenges you overcame
-            and the impact of your solution.</p>
-            <a href='#'>View Project →</a>
+            <h3 style='color: #60a5fa;'>NASA API Explorer</h3>
+            <p>
+            The NASA Space Explorer is an interactive web application combining multiple NASA APIs with modern visualization techniques.
+Key Technical Components:
+
+Frontend: Streamlit for the main interface and interactive dashboard
+NASA APIs: Integration with APOD, NEO, Earth imagery, and Mars rover data
+Data Visualization: Plotly for interactive charts and space object tracking
+Image Processing: PIL and OpenCV for image enhancement and analysis
+Maps: Folium for interactive Earth observation mapping
+
+Technical Achievements:
+
+Built a multi-API synchronization system
+Implemented real-time space object visualization
+Created dynamic Earth observation mapping
+Developed interactive Mars rover photo galleries
+Integrated astronomy picture archival system
+
+The application showcases expertise in:
+
+API integration and management
+Data visualization and mapping
+Image processing and enhancement
+Interactive dashboard design
+Real-time data streaming
+
+This application effectively combines astronomical data, satellite imagery, and space exploration information into an engaging educational platform, demonstrating proficiency in complex API handling and data visualization.
+</p>
+            <a href='https://github.com/Brian-Zavala/NASA'>View Project →</a>
         </div>
         """, unsafe_allow_html=True)
 
