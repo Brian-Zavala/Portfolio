@@ -15,6 +15,7 @@ st.set_page_config(
 hide_menu = """
 <style>
 #MainMenu {visibility: hidden;}
+header {visibility: hidden;}
 footer {visibility: hidden;}
 </style>
 """
@@ -367,7 +368,15 @@ if selected_page == "Home":
         st.image("images/photo.png", use_column_width=True)
 
     with col2:
+
+
         st.markdown("<h1>Brian Zavala</h1>", unsafe_allow_html=True)
+
+        st.markdown("""
+        <div style='padding: 20px; border-radius: 10px; margin:0; padding:0;'>
+            <h3 style='color: #60A5FA;'>Python Portfolio</h3>
+            """, unsafe_allow_html=True)
+
         st.markdown("""
         <p style='font-size: 1.4rem; color: #94a3b8 !important;'>
             Software Developer & Computer Science Student
@@ -386,6 +395,8 @@ if selected_page == "Home":
         </p>
         """, unsafe_allow_html=True)
 
+
+
 elif selected_page == "Skills":
     st.markdown("<h1>Technical Skills</h1>", unsafe_allow_html=True)
 
@@ -398,6 +409,11 @@ elif selected_page == "Skills":
             <ul style='color: #e2e8f0;'>
                 <li>HTML5 & CSS3</li>
                 <li>Responsive Design</li>
+                <li>Interactive UI Components</li>
+                <li>Custom Web Components</li>
+                <li>Bootstrap/Tailwind CSS</li>
+                <li>Dynamic Styling</li>
+                <li>Web Accessibility Standards</li>
             </ul>
         </div>
         """, unsafe_allow_html=True)
@@ -408,9 +424,19 @@ elif selected_page == "Skills":
             <h3 style='color: #60a5fa;'>Backend Development</h3>
             <ul style='color: #e2e8f0;'>
                 <li>Python</li>
-                <li>SQL</li>
-                <li>Pandas</li>
-                <li>Matplotlib</li>
+                <li>SQL (SQLite, PostgreSQL)</li>
+                <li>MongoDB/NoSQL</li>
+                <li>RESTful APIs</li>
+                <li>API Integration & Development</li>
+                <li>Pandas & NumPy</li>
+                <li>Data Processing & Analysis</li>
+                <li>Matplotlib & Plotly</li>
+                <li>Seaborn & Visualization</li>
+                <li>Async/Await Programming</li>
+                <li>Database Design & Management</li>
+                <li>Error Handling & Logging</li>
+                <li>Security Implementation</li>
+                <li>Performance Optimization</li>
             </ul>
         </div>
         """, unsafe_allow_html=True)
@@ -420,9 +446,23 @@ elif selected_page == "Skills":
         <div class='skill-container'>
             <h3 style='color: #60a5fa;'>Tools & Technologies</h3>
             <ul style='color: #e2e8f0;'>
-                <li>Git & GitHub</li>
+               <li>Git & GitHub</li>
                 <li>Streamlit/Django/Flask</li>
                 <li>Python Modules/Libraries</li>
+                <li>Web Scraping (Selenium, BeautifulSoup4)</li>
+                <li>AI Integration (Groq API)</li>
+                <li>Version Control</li>
+                <li>Cloud Platforms (MongoDB Atlas)</li>
+                <li>Data Visualization Tools</li>
+                <li>IDE & Development Tools</li>
+                <li>Virtual Environments</li>
+                <li>Package Management</li>
+                <li>Testing & Debugging</li>
+                <li>Documentation Tools</li>
+                <li>Project Management Tools</li>
+                <li>Deployment & Hosting</li>
+                <li>Environment Configuration</li>
+                <li>CI/CD Pipelines</li>
             </ul>
         </div>
         """, unsafe_allow_html=True)
