@@ -2,16 +2,11 @@ import streamlit as st
 from css import sidebar_css, main_page_css, fix_general_styles
 
 
-# Page Configuration
 st.set_page_config(
     page_title="Brian's Portfolio",
     page_icon="💻",
     layout="wide",
-    initial_sidebar_state="expanded",
-    menu_items ={
-        'Get Help': None,
-        'Report a bug': None,
-        'About': None})
+    initial_sidebar_state="expanded")
 
 hide_menu = """
 <style>

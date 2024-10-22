@@ -392,20 +392,6 @@ a:hover {
     padding: 0 1rem;
 }
 
-/* Custom scrollbar */
-::-webkit-scrollbar {
-    width: 6px;
-    height: 6px;
-}
-
-::-webkit-scrollbar-track {
-    background: rgba(255, 255, 255, 0.1);
-}
-
-::-webkit-scrollbar-thumb {
-    background: rgba(96, 165, 250, 0.5);
-    border-radius: 3px;
-}
 
 /* Desktop styles */
 @media (min-width: 768px) {
