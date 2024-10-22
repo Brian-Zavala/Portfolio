@@ -16,225 +16,92 @@ def sidebar_css():
             left: -50%;
             right: -50%;
             bottom: -50%;
-            pointer-events: none;  /* Allow clicks to pass through */
+            pointer-events: none;
             background: 
-                radial-gradient(circle at 30% 30%, rgba(96, 165, 250, 0.1) 0%, transparent 50%),
-                radial-gradient(circle at 70% 60%, rgba(96, 165, 250, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 30% 30%, rgba(96, 165, 250, 0.05) 0%, transparent 60%),
+                radial-gradient(circle at 70% 60%, rgba(96, 165, 250, 0.05) 0%, transparent 60%),
                 linear-gradient(
                     45deg,
                     transparent 0%,
-                    rgba(96, 165, 250, 0.1) 25%,
+                    rgba(96, 165, 250, 0.05) 25%,
                     transparent 50%,
-                    rgba(96, 165, 250, 0.1) 75%,
+                    rgba(96, 165, 250, 0.05) 75%,
                     transparent 100%
-                ),
-                repeating-linear-gradient(
-                    60deg,
-                    transparent 0%,
-                    transparent 2%,
-                    rgba(96, 165, 250, 0.1) 2.5%,
-                    transparent 3%
-                ),
-                repeating-linear-gradient(
-                    120deg,
-                    transparent 0%,
-                    transparent 1.5%,
-                    rgba(96, 165, 250, 0.1) 2%,
-                    transparent 2.5%
                 );
-            animation: electricFlow 8s linear infinite,
-                      pulsate 4s ease-in-out infinite;
+            animation: electricFlow 12s linear infinite;
+            transform-origin: center center;
+            will-change: transform;
             z-index: 1;
         }
 
         section[data-testid="stSidebar"] > div::after {
             content: '';
             position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            pointer-events: none;  /* Allow clicks to pass through */
-            background: 
-                radial-gradient(circle at 50% var(--y, 50%), 
-                    rgba(96, 165, 250, 0.3) 0%,
-                    transparent 40%);
-            animation: electric-glow 3s ease-in-out infinite alternate;
+            inset: 0;
+            pointer-events: none;
+            background: radial-gradient(
+                circle at 50% var(--y, 50%), 
+                rgba(96, 165, 250, 0.15) 0%,
+                transparent 70%
+            );
+            animation: electric-glow 6s ease-in-out infinite;
+            will-change: opacity, filter;
             z-index: 2;
         }
 
         @keyframes electricFlow {
             0% {
-                transform: translate(0, 0) rotate(0deg);
-            }
-            100% {
-                transform: translate(-20%, -20%) rotate(1deg);
-            }
-        }
-
-        @keyframes pulsate {
-            0%, 100% {
+                transform: translateY(0) rotate(0deg);
                 opacity: 0.5;
             }
             50% {
-                opacity: 1;
+                opacity: 0.7;
+            }
+            100% {
+                transform: translateY(-15%) rotate(1deg);
+                opacity: 0.5;
             }
         }
 
         @keyframes electric-glow {
             0% {
-                --y: 0%;
-                filter: brightness(1);
-            }
-            100% {
-                --y: 100%;
-                filter: brightness(1.5);
-            }
-        }
-
-        /* Ensure radio buttons are clickable */
-        section[data-testid="stSidebar"] [data-testid="stRadio"] {
-            position: relative;
-            z-index: 3;  /* Increased z-index */
-        }
-
-        /* Style radio buttons and maintain functionality */
-        section[data-testid="stSidebar"] [role="radiogroup"] label {
-            position: relative;
-            z-index: 3;  /* Increased z-index */
-            text-shadow: 0 0 10px rgba(96, 165, 250, 0.5);
-            transition: all 0.3s ease;
-            cursor: pointer;
-        }
-
-        section[data-testid="stSidebar"] [role="radiogroup"] label:hover {
-            text-shadow: 0 0 15px rgba(96, 165, 250, 0.8);
-            color: #60a5fa;
-        }
-
-        /* Ensure the title is visible */
-        section[data-testid="stSidebar"] [data-testid="stMarkdown"] {
-            position: relative;
-            z-index: 3;  /* Increased z-index */
-        }
-        </style>
-    """, unsafe_allow_html=True)
-
-st.markdown("""
-        <style>
-        section[data-testid="stSidebar"] > div {
-            background: #1a1a1a;
-            position: relative;
-            overflow: hidden;
-        }
-
-        section[data-testid="stSidebar"] > div::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            right: -50%;
-            bottom: -50%;
-            pointer-events: none;  /* Allow clicks to pass through */
-            background: 
-                radial-gradient(circle at 30% 30%, rgba(96, 165, 250, 0.1) 0%, transparent 50%),
-                radial-gradient(circle at 70% 60%, rgba(96, 165, 250, 0.1) 0%, transparent 50%),
-                linear-gradient(
-                    45deg,
-                    transparent 0%,
-                    rgba(96, 165, 250, 0.1) 25%,
-                    transparent 50%,
-                    rgba(96, 165, 250, 0.1) 75%,
-                    transparent 100%
-                ),
-                repeating-linear-gradient(
-                    60deg,
-                    transparent 0%,
-                    transparent 2%,
-                    rgba(96, 165, 250, 0.1) 2.5%,
-                    transparent 3%
-                ),
-                repeating-linear-gradient(
-                    120deg,
-                    transparent 0%,
-                    transparent 1.5%,
-                    rgba(96, 165, 250, 0.1) 2%,
-                    transparent 2.5%
-                );
-            animation: electricFlow 8s linear infinite,
-                      pulsate 4s ease-in-out infinite;
-            z-index: 1;
-        }
-
-        section[data-testid="stSidebar"] > div::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            pointer-events: none;  /* Allow clicks to pass through */
-            background: 
-                radial-gradient(circle at 50% var(--y, 50%), 
-                    rgba(96, 165, 250, 0.3) 0%,
-                    transparent 40%);
-            animation: electric-glow 3s ease-in-out infinite alternate;
-            z-index: 2;
-        }
-
-        @keyframes electricFlow {
-            0% {
-                transform: translate(0, 0) rotate(0deg);
-            }
-            100% {
-                transform: translate(-20%, -20%) rotate(1deg);
-            }
-        }
-
-        @keyframes pulsate {
-            0%, 100% {
+                --y: 10%;
                 opacity: 0.5;
+                filter: brightness(1);
             }
             50% {
-                opacity: 1;
-            }
-        }
-
-        @keyframes electric-glow {
-            0% {
-                --y: 0%;
-                filter: brightness(1);
+                opacity: 0.7;
+                filter: brightness(1.2);
             }
             100% {
-                --y: 100%;
-                filter: brightness(1.5);
+                --y: 90%;
+                opacity: 0.5;
+                filter: brightness(1);
             }
         }
 
-        /* Ensure radio buttons are clickable */
+        /* Radio buttons and labels */
         section[data-testid="stSidebar"] [data-testid="stRadio"] {
             position: relative;
-            z-index: 3;  /* Increased z-index */
+            z-index: 3;
         }
 
-        /* Style radio buttons and maintain functionality */
         section[data-testid="stSidebar"] [role="radiogroup"] label {
             position: relative;
-            z-index: 3;  /* Increased z-index */
-            text-shadow: 0 0 10px rgba(96, 165, 250, 0.5);
-            transition: all 0.3s ease;
-            cursor: pointer;
+            z-index: 3;
+            text-shadow: 0 0 8px rgba(96, 165, 250, 0.3);
+            transition: all 0.2s ease-out;
         }
 
         section[data-testid="stSidebar"] [role="radiogroup"] label:hover {
-            text-shadow: 0 0 15px rgba(96, 165, 250, 0.8);
+            text-shadow: 0 0 12px rgba(96, 165, 250, 0.6);
             color: #60a5fa;
+            transform: translateX(2px);
         }
 
-        /* Ensure the title is visible */
         section[data-testid="stSidebar"] [data-testid="stMarkdown"] {
             position: relative;
-            z-index: 3;  /* Increased z-index */
+            z-index: 3;
         }
         </style>
     """, unsafe_allow_html=True)
@@ -584,5 +451,47 @@ def fix_general_styles():
 .stApp > header {
     position: absolute !important;
 }
+   /* Basic scroll fixes */
+    [data-testid="stAppViewContainer"] {
+        overflow-x: hidden !important;
+        overflow-y: auto !important;
+    }
+
+    .main .block-container {
+        overflow-y: auto !important;
+        height: auto !important;
+        padding-bottom: 3rem;
+    }
+
+    /* Project page specific fixes */
+    [data-testid="stVerticalBlock"] {
+        height: auto !important;
+        min-height: auto !important;
+        overflow: visible !important;
+    }
+
+    .project-card {
+        height: auto !important;
+        overflow: visible !important;
+        margin-bottom: 1.5rem !important;
+    }
+
+    /* Fix desktop scrolling */
+    @media (min-width: 768px) {
+        .stApp {
+            overflow: auto !important;
+            height: auto !important;
+        }
+
+        [data-testid="stHorizontalBlock"] {
+            height: auto !important;
+            overflow: visible !important;
+        }
+
+        [data-testid="column"] {
+            height: auto !important;
+            overflow: visible !important;
+        }
+    }
     </style>
     """, unsafe_allow_html=True)
