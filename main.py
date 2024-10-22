@@ -1,5 +1,4 @@
 import streamlit as st
-from css import sidebar_css, main_page_css, fix_general_styles
 
 
 st.set_page_config(
@@ -7,6 +6,9 @@ st.set_page_config(
     page_icon="💻",
     layout="wide",
     initial_sidebar_state="expanded")
+
+from css import sidebar_css, main_page_css, fix_general_styles
+
 
 hide_menu = """
 <style>
