@@ -12,6 +12,7 @@ from css import sidebar_css, main_page_css, fix_general_styles
 
 hide_menu = """
 <style>
+header{visibility: hidden;}
 footer {visibility: hidden;}
 </style>
 """
