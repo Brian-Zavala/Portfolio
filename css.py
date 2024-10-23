@@ -109,184 +109,312 @@ def sidebar_css():
 def main_page_css():
     st.markdown("""
 <style>
-/* Main container styling */
+/* Modern Gradient Background with Animation */
 [data-testid="stAppViewContainer"] {
-    background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
-    background-size: cover;
-    background-attachment: fixed;
+    background: linear-gradient(45deg, #0f172a, #1e293b, #1e293b, #0f172a);
+    background-size: 400% 400%;
+    animation: gradientBG 15s ease infinite;
+    min-height: 100vh;
+    position: relative;
 }
 
-/* Base container and layout */
-[data-testid="stVerticalBlock"] {
-    width: 100% !important;
-    padding: 2rem !important;
-    margin: 1rem auto !important;
-    display: flex !important;
-    flex-direction: column !important;
-    align-items: center !important;
-    justify-content: center !important;
-    background: rgba(255, 255, 255, 0.05);
-    border-radius: 10px;
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+@keyframes gradientBG {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
 }
 
-/* Column styles */
-[data-testid="column"] {
-    width: 100% !important;
-    padding: 0.5rem !important;
-    display: flex !important;
-    flex-direction: column !important;
-    align-items: center !important;
-    justify-content: center !important;
-    text-align: center !important;
+/* Particle Effect Overlay */
+[data-testid="stAppViewContainer"]::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: 
+        linear-gradient(rgba(96, 165, 250, 0.05) 0%, rgba(96, 165, 250, 0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(96, 165, 250, 0.05) 0%, rgba(96, 165, 250, 0.05) 1px, transparent 1px);
+    background-size: 100px 100px, 100px 100px, 120px 120px, 150px 150px;
+    animation: particleFloat 20s linear infinite;
+    pointer-events: none;
 }
 
-/* Horizontal block behavior */
-[data-testid="stHorizontalBlock"] {
-    display: flex !important;
-    flex-direction: column !important;
-    width: 100% !important;
+@keyframes particleFloat {
+    0% { background-position: 0 0; }
+    100% { background-position: 100px 100px; }
 }
 
-/* Card and container styles */
-.project-card, .skill-container {
-    width: 100% !important;
-    padding: 1.5rem !important;
-    margin: 0.5rem 0 !important;
-    box-sizing: border-box !important;
-    background: rgba(255, 255, 255, 0.05);
-    border-radius: 8px;
-    text-align: center;
-}
-
-.project-card {
-    width: 90%;
-    border-radius: 10px;
-    margin: 1rem auto;
-}
-
-/* Typography */
-p {
-    color: #e2e8f0 !important;
-    font-size: calc(14px + 0.5vw) !important;
-    line-height: 1.7 !important;
-    padding: 0 0.5rem !important;
-    text-align: center !important;
+/* Container for all home page content */
+.home-content {
     max-width: 800px;
-    margin: 1rem auto !important;
-    word-wrap: break-word !important;
+    margin: 0 auto;
+    padding: 2rem;
 }
 
+/* Header section styling */
+.home-header {
+    text-align: center;
+    margin-bottom: 2.5rem;
+}
+
+.home-header h1 {
+    margin-bottom: 0.5rem;
+}
+
+.home-header h3 {
+    margin-bottom: 1rem;
+}
+
+/* Introduction text container */
+.intro-container {
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(12px);
+    border-radius: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    padding: 2rem;
+    margin: 2rem 0;
+}
+
+/* Introduction text styling */
+.intro-text {
+    color: #e2e8f0;
+    font-size: 1.1rem;
+    line-height: 1.8;
+    letter-spacing: 0.01em;
+    white-space: normal;
+    word-wrap: break-word;
+    text-align: left;
+    max-width: 65ch; /* Optimal line length for readability */
+    margin: 0 auto;
+}
+
+.intro-text p {
+    margin-bottom: 1.5rem;
+    padding: 0;
+}
+
+.intro-text p:last-child {
+    margin-bottom: 0;
+}
+/* Paragraph Spacing */
+.intro-text p + p {
+    margin-top: 1.5rem !important;
+}
+
+
+/* Modern Card Design */
+.project-card {
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 24px;
+    padding: 2.5rem;
+    margin: 1.5rem 0;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+.project-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    border-radius: 16px;
+    background: linear-gradient(45deg, transparent, rgba(96, 165, 250, 0.1), transparent);
+    transform: translateX(-1500%);
+    transform: rotate(0deg);
+    transition: transform 0.88s;
+}
+
+.project-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+    border-color: rgba(96, 165, 250, 0.2);
+}
+
+.project-card:hover::before {
+    transform: translateY(-106.3%);
+}
+
+/* Enhanced Skill Container */
+.skill-container {
+    background: rgba(255, 255, 255, 0.02);
+    border-radius: 20px;
+    padding: 2rem;
+    height: 100%;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.skill-container::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100px;
+    height: 100px;
+    background: radial-gradient(circle, rgba(96, 165, 250, 0.1) 0%, transparent 70%);
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.skill-container:hover::after {
+    opacity: 1;
+}
+
+/* Modern Typography */
 h1 {
-    background: linear-gradient(120deg, #60a5fa, #3b82f6);
+    font-size: calc(32px + 1.5vw) !important;
+    font-weight: 800 !important;
+    background: linear-gradient(120deg, #60a5fa, #3b82f6, #60a5fa);
+    background-size: 200% auto;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    font-size: calc(24px + 1.5vw) !important;
-    font-weight: 700 !important;
-    padding: 0 0.5rem !important;
-    margin-bottom: 1rem !important;
+    animation: textShine 3s linear infinite;
     text-align: center !important;
+    }
+
+h4 {
+display: flex;
+flex-grow: 1;
 }
 
-h3 {
-    font-size: calc(18px + 0.8vw) !important;
-    padding: 0 0.5rem !important;
+@keyframes textShine {
+    to { background-position: 200% center; }
 }
 
-/* List styling */
-ul {
-    list-style-position: inside;
-    padding-left: 0;
-    text-align: center;
-}
-
+/* Enhanced List Items */
 li {
-    margin: 0.5rem 0;
-    font-size: calc(14px + 0.5vw) !important;
-    line-height: 1.6 !important;
-    padding: 0 0.5rem !important;
-    word-wrap: break-word !important;
+    position: relative;
+    padding: 0.6rem 0;
+    padding-left: 1.5rem;
+    transition: all 0.3s ease;
 }
 
-/* Image handling */
-[data-testid="stImage"] {
-    max-width: 100% !important;
-    height: auto !important;
-    margin: 1rem auto !important;
-    border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease;
-    display: block;
+li::before {
+    content: '▹';
+    position: absolute;
+    left: 0;
+    color: #60a5fa;
+    opacity: 0.8;
+    transform: translateX(0);
+    transition: all 0.3s ease;
 }
 
-[data-testid="stImage"] img {
-    margin: 0 auto;
-    display: block;
+li:hover {
+    transform: translateX(8px);
+    color: #60a5fa !important;
 }
 
-[data-testid="stImage"]:hover {
-    transform: translateY(-5px);
+li:hover::before {
+    opacity: 1;
+    transform: translateX(-5px);
 }
 
-/* Link styling */
+/* Modern Contact Section */
+.contact-section {
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(12px);
+    border-radius: 24px;
+    padding: 3rem;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    position: relative;
+    overflow: hidden;
+}
+
+.contact-section::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(96, 165, 250, 0.1) 0%, transparent 50%);
+    animation: rotateBG 15s linear infinite;
+    pointer-events: none;
+}
+
+@keyframes rotateBG {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Enhanced Link Styling */
 a {
     color: #60a5fa !important;
     text-decoration: none !important;
-    transition: color 0.3s ease;
+    position: relative;
+    padding: 0.2rem 0;
+    transition: all 0.3s ease;
 }
 
-a:hover {
-    color: #3b82f6 !important;
+a::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, #60a5fa, transparent);
+    transform: scaleX(0);
+    transform-origin: center;
+    transition: transform 0.4s ease;
 }
 
-/* Sidebar styling */
-[data-testid="stSidebar"] {
-    background-color: rgba(15, 23, 42, 0.9);
-    border-right: 1px solid rgba(255, 255, 255, 0.1);
-    width: auto !important;
-    padding: 0.5rem !important;
+a:hover::before {
+    transform: scaleX(1);
 }
 
-[data-testid="stSidebar"] [data-testid="stMarkdown"] {
-    padding: 0.5rem !important;
+/* Profile Image Enhancement */
+[data-testid="stImage"] img {
+    border-radius: 24px;
+    transition: all 0.4s ease;
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    filter: brightness(0.95) contrast(1.1);
 }
 
-/* Container width control */
-.content-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 1rem;
+[data-testid="stImage"] img:hover {
+    transform: scale(1.02);
+    border-color: rgba(96, 165, 250, 0.3);
+    filter: brightness(1.05) contrast(1.1);
+    box-shadow: 0 8px 32px rgba(96, 165, 250, 0.2);
 }
 
-
-/* Desktop styles */
-@media (min-width: 768px) {
-    /* Column behavior */
-    [data-testid="column"] {
-        width: auto !important;
-        flex: 1 1 0 !important;
-    }
-    
-    /* Horizontal block behavior */
-    [data-testid="stHorizontalBlock"] {
-        flex-direction: row !important;
-        flex-wrap: nowrap !important;
-    }
-    
-    /* Card spacing */
+/* Responsive Design Improvements */
+@media (max-width: 768px) {
     .project-card, .skill-container {
-        margin: 1rem !important;
+        padding: 1.5rem;
+        margin: 1rem 0;
     }
     
-    /* Typography padding */
-    p, li {
-        padding: 0 1rem !important;
+    h1 {
+        font-size: calc(24px + 1.5vw) !important;
+    }
+        .home-content {
+        padding: 1rem;
     }
     
-    /* Image sizing */
-    [data-testid="stImage"] {
-        max-width: 100% !important;
+    .intro-container {
+        padding: 1.5rem;
+    }
+    
+    .intro-text {
+        font-size: 1rem;
+        line-height: 1.6;
+    }
+    .contact-section {
+        padding: 2rem;
+    }
+    
+    li {
+        padding: 0.4rem 0;
+        padding-left: 1.2rem;
     }
 }
 </style>
@@ -317,8 +445,7 @@ def fix_general_styles():
     [data-testid="stVerticalBlock"] {
         max-width: 100% !important;
         overflow: hidden !important;
-        margin: 0 auto !important;
-        padding: 1rem !important;
+        margin-left: 1rem auto !important;
         box-sizing: border-box !important;
     }
 
@@ -333,10 +460,10 @@ def fix_general_styles():
     /* Fix text container width */
     .text-container {
         width: 100% !important;
-        max-width: 800px !important;
-        margin: 0 auto !important;
+        max-width: 100% !important;
         padding: 0 1rem !important;
         box-sizing: border-box !important;
+        
     }
 
     /* Contact page specific fixes */
@@ -369,20 +496,7 @@ def fix_general_styles():
         margin: 0.5rem auto !important;
     }
 
-    /* Mobile-specific adjustments */
-    @media (max-width: 768px) {
-        [data-testid="stVerticalBlock"] {
-            padding: 0.5rem !important;
-        }
 
-        .contact-section {
-            padding: 0.5rem !important;
-        }
-
-        [data-testid="column"] {
-            padding: 0.5rem !important;
-        }
-    }
     
     /* Enable scrolling on mobile */
 [data-testid="stAppViewContainer"] {
@@ -411,7 +525,7 @@ def fix_general_styles():
 }
 
 /* Mobile-specific fixes */
-@media (max-width: 768px) {
+@media (max-width: 768px) (min-width: 769px) {
     [data-testid="stAppViewContainer"] {
         position: static !important;
     }
