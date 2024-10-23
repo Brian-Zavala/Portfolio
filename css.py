@@ -3,6 +3,12 @@ import streamlit as st
 def sidebar_css():
     st.markdown("""
         <style>
+                /* Adjust sidebar width */
+        [data-testid="stSidebar"][aria-expanded="true"] {
+            min-width: 200px !important;
+            max-width: 200px !important;
+        }
+
         section[data-testid="stSidebar"] > div {
             background: #1a1a1a;
             position: relative;
@@ -102,6 +108,9 @@ def main_page_css():
     animation: gradientBG 15s ease infinite;
     min-height: 100vh;
     position: relative;
+    margin: 0 !important;
+    padding: 0 !important;
+
 }
 
 @keyframes gradientBG {
@@ -410,6 +419,33 @@ a:hover::before {
 def fix_general_styles():
     st.markdown("""
     <style>
+        /* Remove top margin and padding */
+    .main > .block-container {
+        padding-top: 0 !important;
+        margin-top: 0 !important;
+    }
+
+    /* Remove header padding/margin if present */
+    header[data-testid="stHeader"] {
+        margin-top: 0 !important;
+        padding-top: 0 !important;
+    }
+
+    /* Fix for any default Streamlit spacing */
+    .stApp {
+        margin-top: 0 !important;
+        padding-top: 0 !important;
+    }
+        /* Remove padding from main container */
+    [data-testid="stAppViewContainer"] > section:first-child {
+        padding-top: 0 !important;
+    }
+
+    /* Target the first block in the main content area */
+    [data-testid="stVerticalBlock"] > div:first-child {
+        padding-top: 0 !important;
+        margin-top: 0 !important;
+    }
     /* Fix for Python Portfolio subtitle */
     h3 {
         font-size: calc(18px + 0.8vw) !important;
@@ -485,7 +521,7 @@ def fix_general_styles():
 
     
     /* Enable scrolling on mobile */
-[data-testid="stAppViewContainer"] {
+[   data-testid="stAppViewContainer"] {
     overflow-x: hidden !important;
     overflow-y: auto !important;
     width: 100vw !important;
@@ -496,7 +532,7 @@ def fix_general_styles():
 }
 
 /* Fix main content area scrolling */
-.main {
+.   main {
     overflow-y: auto !important;
     height: auto !important;
     min-height: 100vh !important;
@@ -504,7 +540,7 @@ def fix_general_styles():
 }
 
 /* Ensure vertical blocks don't restrict scrolling */
-[data-testid="stVerticalBlock"] {
+[   data-testid="stVerticalBlock"] {
     height: auto !important;
     min-height: auto !important;
     overflow: visible !important;
@@ -515,8 +551,13 @@ def fix_general_styles():
     [data-testid="stAppViewContainer"] {
         position: static !important;
     }
-    
+    /* Remove margin from first element in main content */
+    .element-container:first-child {
+        margin-top: 0 !important;
+        padding-top: 0 !important;
+    }
     .stApp {
+        margin: 0 !important;
         overflow: auto !important;
         height: auto !important;
     }
