@@ -5,7 +5,7 @@ st.set_page_config(
     page_title="Brian's Portfolio",
     page_icon="💻",
     layout="wide",
-    initial_sidebar_state="expanded")
+    initial_sidebar_state="auto")
 
 from css import sidebar_css, main_page_css, fix_general_styles
 
