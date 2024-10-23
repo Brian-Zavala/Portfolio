@@ -18,16 +18,21 @@ def sidebar_css():
             bottom: -50%;
             pointer-events: none;
             background: 
-                radial-gradient(circle at 30% 30%, rgba(96, 165, 250, 0.05) 0%, transparent 60%),
-                radial-gradient(circle at 70% 60%, rgba(96, 165, 250, 0.05) 0%, transparent 60%),
+                /* Geometric squares */
+                linear-gradient(rgba(96, 165, 250, 0.03) 0%, rgba(96, 165, 250, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(96, 165, 250, 0.03) 0%, rgba(96, 165, 250, 0.03) 1px, transparent 1px),
+                /* Electric gradients */
+                radial-gradient(circle at 30% 30%, rgba(96, 165, 250, 0.07) 0%, transparent 60%),
+                radial-gradient(circle at 70% 60%, rgba(96, 165, 250, 0.07) 0%, transparent 60%),
                 linear-gradient(
                     45deg,
                     transparent 0%,
-                    rgba(96, 165, 250, 0.05) 25%,
+                    rgba(96, 165, 250, 0.08) 25%,
                     transparent 50%,
-                    rgba(96, 165, 250, 0.05) 75%,
+                    rgba(96, 165, 250, 0.08) 75%,
                     transparent 100%
                 );
+            background-size: 20px 20px, 20px 20px, 100% 100%, 100% 100%, 200% 200%;
             animation: electricFlow 12s linear infinite;
             transform-origin: center center;
             will-change: transform;
@@ -39,70 +44,51 @@ def sidebar_css():
             position: absolute;
             inset: 0;
             pointer-events: none;
-            background: radial-gradient(
-                circle at 50% var(--y, 50%), 
-                rgba(96, 165, 250, 0.15) 0%,
-                transparent 70%
-            );
+            background: 
+                radial-gradient(
+                    circle at 50% var(--y, 50%), 
+                    rgba(96, 165, 250, 0.2) 0%,
+                    transparent 70%
+                ),
+                /* Additional subtle squares */
+                linear-gradient(45deg, rgba(96, 165, 250, 0.02) 1px, transparent 1px),
+                linear-gradient(-45deg, rgba(96, 165, 250, 0.02) 1px, transparent 1px);
+            background-size: 100% 100%, 30px 30px, 30px 30px;
             animation: electric-glow 6s ease-in-out infinite;
             will-change: opacity, filter;
             z-index: 2;
         }
 
-        @keyframes electricFlow {
-            0% {
-                transform: translateY(0) rotate(0deg);
-                opacity: 0.5;
-            }
-            50% {
-                opacity: 0.7;
-            }
-            100% {
-                transform: translateY(-15%) rotate(1deg);
-                opacity: 0.5;
-            }
-        }
 
-        @keyframes electric-glow {
-            0% {
-                --y: 10%;
-                opacity: 0.5;
-                filter: brightness(1);
-            }
-            50% {
-                opacity: 0.7;
-                filter: brightness(1.2);
-            }
-            100% {
-                --y: 90%;
-                opacity: 0.5;
-                filter: brightness(1);
-            }
-        }
 
-        /* Radio buttons and labels */
+        /* Enhanced Radio buttons and labels */
         section[data-testid="stSidebar"] [data-testid="stRadio"] {
             position: relative;
             z-index: 3;
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 8px;
+            padding: 8px;
+            backdrop-filter: blur(4px);
         }
 
         section[data-testid="stSidebar"] [role="radiogroup"] label {
             position: relative;
             z-index: 3;
             text-shadow: 0 0 8px rgba(96, 165, 250, 0.3);
-            transition: all 0.2s ease-out;
+            transition: all 0.3s ease-out;
+            padding: 8px 12px;
+            border-radius: 6px;
+            background: transparent;
         }
 
         section[data-testid="stSidebar"] [role="radiogroup"] label:hover {
             text-shadow: 0 0 12px rgba(96, 165, 250, 0.6);
             color: #60a5fa;
-            transform: translateX(2px);
+            transform: translateX(4px);
+            background: rgba(96, 165, 250, 0.1);
         }
 
-        section[data-testid="stSidebar"] [data-testid="stMarkdown"] {
-            position: relative;
-            z-index: 3;
-        }
+
         </style>
     """, unsafe_allow_html=True)
 
