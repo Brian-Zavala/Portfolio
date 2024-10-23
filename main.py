@@ -339,13 +339,13 @@ elif selected_page == "Contact":
 
     # Adding contact buttons with Streamlit
     st.write("")  # Spacing
-    st.markdown("#### 📧 Email")
+    st.markdown("#### Email")
     st.markdown("[brian.zavala25@proton.me](mailto:brian.zavala25@proton.me)")
 
     st.write("")  # Spacing
-    st.markdown("#### 💼 LinkedIn")
+    st.markdown("#### LinkedIn")
     st.markdown("[LinkedIn Profile](https://www.linkedin.com/in/brian-zavala-361239328?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3BXZ6tE6FiTqCxdBm9obN0BA%3D%3D)")
 
     st.write("")  # Spacing
-    st.markdown("#### 🐱 GitHub")
+    st.markdown("#### GitHub")
     st.markdown("[GitHub Profile](https://github.com/Brian-Zavala)")
